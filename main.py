@@ -76,5 +76,6 @@ if __name__ == "__main__":
 	# save schema to file
 	data_file_name = os.path.basename(path)
 	schema_file_name = data_file_name.replace("data", "schema")
-	with open(f'schema/{schema_file_name}', 'w+') as schema_file:
+	schema_file_path = os.path.join("schema", schema_file_name)
+	with open(schema_file_path, 'w') as schema_file:
 		schema_file.write(schema)
