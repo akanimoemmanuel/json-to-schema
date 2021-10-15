@@ -1,5 +1,5 @@
 import unittest
-from main import createSchema, getSchema
+from main import createSchema
 
 class TestJSONToSchema(unittest.TestCase):
 
