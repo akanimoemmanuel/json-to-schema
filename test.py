@@ -1,67 +1,39 @@
 import unittest
-from main import getSchema
+from main import createSchema, getSchema
 
 class TestJSONToSchema(unittest.TestCase):
-    def test_create_data_1_schema(self):
-        expected_result = {
-            "battle": {
-                "type": "ARRAY",
-                "tag": "",
-                "description": "",
-                "required": False
-            },
-            "joiner": {
-                "type": "ARRAY",
-                "tag": "",
-                "description": "",
-                "required": False
-            },
-            "participantIds": {
-                "type": "ENUM",
-                "tag": "",
-                "description": "",
-                "required": False
-            }
-        }
-        self.assertEqual(getSchema("data/data_1.json"), expected_result)
 
-    def test_create_data_2_schema(self):
+    def test_create_schema(self):
+        test_json = {
+            "STRING": "Akanimo Emmanuel",
+            "INTEGER": 1,
+            "ENUM": ["ONE", "TWO", "THREE", "FOUR"],
+            "ARRAY": {1: "ONE", 2: "TWO"}
+        }
         expected_result = {
-            "user": {
-                "type": "ARRAY",
+            "STRING": {
+                "type": "STRING",
                 "tag": "",
                 "description": "",
                 "required": False
             },
-            "time": {
+            "INTEGER": {
                 "type": "INTEGER",
                 "tag": "",
                 "description": "",
                 "required": False
             },
-            "acl": {
+            "ENUM": {
                 "type": "ENUM",
                 "tag": "",
                 "description": "",
                 "required": False
             },
-            "publicFeed": {
-                "type": "BOOLEAN",
+            "ARRAY": {
+                "type": "ARRAY",
                 "tag": "",
                 "description": "",
                 "required": False
             },
-            "internationalCountries": {
-                "type": "ENUM",
-                "tag": "",
-                "description": "",
-                "required": False
-            },
-            "topTraderFeed": {
-                "type": "BOOLEAN",
-                "tag": "",
-                "description": "",
-                "required": False
-            }
         }
-        self.assertEqual(getSchema("data/data_2.json"), expected_result)
+        self.assertEqual(createSchema(test_json), expected_result)
